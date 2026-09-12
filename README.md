@@ -19,7 +19,17 @@ git clone https://github.com/HanjingLaura/precision-recruiter-flow.git ~/.codex/
 git -C ~/.codex/skills/precision-recruiter-flow pull
 ```
 
+卸载时删除安装目录：
+
+```bash
+rm -rf ~/.codex/skills/precision-recruiter-flow
+```
+
 本 skill 面向 **Codex 桌面版（macOS）**；Automations 在桌面版里创建。岗位数据仍保存在工作区的 `.precision-recruiter-local/jobs/<slug>/`，与平台无关，Mac 同样如此。
+
+删除 skill 安装目录不会删除工作区中的岗位资料；资料位于每个工作区的 `.precision-recruiter-local/jobs/`。
+
+在 Finder 中按 `Command-Shift-G`（前往文件夹），输入 `~/.codex/skills` 并回车即可打开安装目录；也可以在 Terminal 执行 `open ~/.codex/skills`。`.codex` 是隐藏目录，但“前往文件夹”仍可直接访问。
 
 ### Windows
 
@@ -27,7 +37,14 @@ git -C ~/.codex/skills/precision-recruiter-flow pull
 
 ### 通用
 
-安装后重启或重新打开 Codex 桌面版，让它重新加载 skill。无论平台如何，岗位数据都写入当前工作区的 `.precision-recruiter-local/jobs/<slug>/`，不会提交到 git。Mac 的详细步骤见 [docs/macos.zh-CN.md](docs/macos.zh-CN.md)。
+安装后重启或重新打开 Codex 桌面版，让它重新加载 skill。无论平台如何，岗位数据都写入当前工作区的 `.precision-recruiter-local/jobs/<slug>/`，不会提交到 git。
+
+### macOS 常见问题
+
+- **Skill 没有出现**：确认仓库位于 `~/.codex/skills/precision-recruiter-flow` 且目录内有 `SKILL.md`；运行更新命令后完全退出并重新打开 Codex 桌面版，并确认打开的是包含 `.precision-recruiter-local/` 的目标工作区。
+- **权限或无法写入**：确认当前用户对 `~/.codex` 和目标工作区有读写权限；Finder 中选中文件夹后按 `Command-I` 查看“共享与权限”。不要用 `sudo` 安装，以免目录属于其他用户。
+- **路径中有空格**：将路径放在引号中，例如 `git -C "$HOME/My Work/.codex/skills/precision-recruiter-flow" pull`；使用 `~` 或 `$HOME` 可避免手写用户名和空格转义。
+- **Mac 上有多个用户名**：每个 macOS 用户都有独立的 `/Users/<用户名>/.codex/skills`。请用实际登录用户安装，并在同一用户的 Codex 桌面版中打开。
 
 ## 文件说明
 
@@ -55,3 +72,13 @@ git -C ~/.codex/skills/precision-recruiter-flow pull
 `06-目标公司-核心人.md` 是公司地图（在岗对标人、上级/协作、同方向未触达、行业标杆、可选离职不久），含“是否已转入 list”；开始打后转入 03。03 只放本单已决定建联、在打或在推的人。人工肉眼搜建议 ≤4h/日，日有效呼出参考 20–30。
 
 如果桌面版不能由 skill 直接创建 Automation，skill 会输出可复制的触发、prompt、读写文件配置，仍由你在 Automations 面板创建。
+
+### macOS Automations 核对
+
+打开 Codex 桌面版的 **Automations** 面板，进入当前工作区，逐项核对触发时间、工作区、prompt 以及读写文件：
+
+1. **5 分钟定标杆**：确认职位理解后创建一次性 Automation，读取 `01-职位理解.md` 和 leader 样板，输出 `02-标准简历.md`。
+2. **Sourcing 2 小时**：确认标杆后创建定向 sourcing Automation，运行窗口为 2 小时；更新 `05-搜索清单.md`、`03-候选人-list.md` 和 `resumes/`，不自动外呼或推客户。
+3. **12:00、18:00 复盘**：岗位进行中创建每天两个复盘 Automation，检查准人进度、呼出、搜超时以及标杆和职位理解回写，并生成 `reviews/YYYY-MM-DD-HH-复盘.md`。
+
+如果界面没有自动创建按钮，复制 skill 输出的触发、prompt 和读写文件配置，在 Automations 面板手动新建。
