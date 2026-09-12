@@ -4,11 +4,30 @@
 
 ## 安装
 
+### macOS（Codex 桌面版）
+
+默认安装路径为 `~/.codex/skills/precision-recruiter-flow`，展开后是 `/Users/<用户名>/.codex/skills/precision-recruiter-flow`。在 zsh 中运行：
+
 ```bash
+mkdir -p ~/.codex/skills
 git clone https://github.com/HanjingLaura/precision-recruiter-flow.git ~/.codex/skills/precision-recruiter-flow
 ```
 
-Windows 可将仓库克隆到 `C:\Users\<用户名>\.codex\skills\precision-recruiter-flow`。安装后在 Codex 桌面版输入 `使用 $precision-recruiter-flow 开一个新岗位`。
+如果已经安装过，使用下面的命令更新：
+
+```bash
+git -C ~/.codex/skills/precision-recruiter-flow pull
+```
+
+本 skill 面向 **Codex 桌面版（macOS）**；Automations 在桌面版里创建。岗位数据仍保存在工作区的 `.precision-recruiter-local/jobs/<slug>/`，与平台无关，Mac 同样如此。
+
+### Windows
+
+可将仓库克隆到 `C:\Users\<用户名>\.codex\skills\precision-recruiter-flow`。更新已安装版本时，在该目录执行 `git pull`。安装后在 Codex 桌面版输入 `使用 $precision-recruiter-flow 开一个新岗位`。
+
+### 通用
+
+安装后重启或重新打开 Codex 桌面版，让它重新加载 skill。无论平台如何，岗位数据都写入当前工作区的 `.precision-recruiter-local/jobs/<slug>/`，不会提交到 git。Mac 的详细步骤见 [docs/macos.zh-CN.md](docs/macos.zh-CN.md)。
 
 ## 文件说明
 
