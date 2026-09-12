@@ -9,7 +9,7 @@ description: "精准猎头流：为每个新岗位建立独立本地目录，先
 当用户说「新岗位」「开一个单」「用精准猎头流」，或粘贴 JD 并要求按猎头流程推进时使用。目标用户是 **Codex 桌面版**：在对应步骤自行创建或更新 Automations；CLI-only 不是目标。Automations 只读写本地岗位文件，**不自动外呼、不自动推客户**，任何外发和拨打都由用户人工完成。
 
 ## 一岗一目录与隐私
-优先在用户工作区创建 `.hj-skill-local/precision-recruiter-flow/jobs/<slug>/`，`<slug>` 用小写字母、数字和短横线。不得把简历、候选人记录、通话日志或公司内部资料提交到 git。开岗时从 `references/templates/` 复制以下结构：
+优先在用户工作区创建 `.precision-recruiter-local/jobs/<slug>/`，`<slug>` 用小写字母、数字和短横线。不得把简历、候选人记录、通话日志或公司内部资料提交到 git。开岗时从 `references/templates/` 复制以下结构：
 
 ```
 01-职位理解.md  02-标准简历.md  03-候选人-list.md  04-电话话术.md

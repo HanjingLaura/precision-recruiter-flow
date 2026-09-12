@@ -16,7 +16,7 @@ Windows 可将仓库克隆到 `C:\Users\<用户名>\.codex\skills\precision-recr
 - `agents/openai.yaml`：桌面版显示名、简介和默认提示词。
 - `references/templates/`：开岗时复制的 7 个岗位文件及复盘模板。
 - `references/images/`：目录树、状态机、Automation 时间线示意图。
-- `.hj-skill-local/precision-recruiter-flow/jobs/<slug>/`：工作区私有岗位数据；简历、通话和复盘不提交 git。
+- `.precision-recruiter-local/jobs/<slug>/`：工作区私有岗位数据；简历、通话和复盘不提交 git。
 
 ![目录树](references/images/directory-tree.svg)
 
@@ -26,7 +26,7 @@ Windows 可将仓库克隆到 `C:\Users\<用户名>\.codex\skills\precision-recr
 
 ## 完整用法
 
-1. 说“新岗位：……”，skill 创建 `.hj-skill-local/precision-recruiter-flow/jobs/<slug>/`，复制模板。
+1. 说“新岗位：……”，skill 创建 `.precision-recruiter-local/jobs/<slug>/`，复制模板。
 2. 共同整理 JD，写入 `01-职位理解.md`；你确认“理解 OK”后才进入下一步。
 3. Codex 桌面版自行创建一次「5 分钟定标杆」Automation：读取 01 和 leader 样板、自搜高匹配、客户面到 offer、在岗画像，写出 `02-标准简历.md`。
 4. 你确认标杆后，创建「Sourcing 2 小时」Automation：按公司、业务线、级别、地点、薪资拆搜索，目标约 10 个准人，更新 `05-搜索清单.md`、`03-候选人-list.md` 和 `resumes/`。禁止过宽搜；不自动外呼、不自动推客户。
